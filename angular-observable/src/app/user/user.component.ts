@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -10,12 +10,16 @@ export class UserComponent implements OnInit {
 
   id!: number;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params)=>{
       this.id = +params['id'];
     })
+  }
+
+  onCallProduct() {
+    this.router.navigate(['product']);
   }
 
 }
